@@ -1,0 +1,23 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+namespace VUdaltsov\UuidVsAutoIncrement;
+
+use Symfony\Component\Console\Application;
+
+error_reporting(E_ALL);
+set_error_handler(fn ($severity, $message, $file, $line) => throw new \ErrorException(message: $message, severity: $severity, filename: $file, line: $line));
+
+require_once __DIR__.'/vendor/autoload.php';
+
+$application = new Application();
+$application->add(new BenchmarkCommand(
+    benchmarks: loadBenchmarks(),
+    databases: loadDatabases(),
+    writerFactory: loadWriterFactory(),
+));
+$application->setDefaultCommand('bench', true);
+/** @psalm-suppress UncaughtThrowInGlobalScope */
+$application->run();

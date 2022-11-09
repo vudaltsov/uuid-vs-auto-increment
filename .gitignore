@@ -1,0 +1,8 @@
+/config/benchmarks.php
+/config/databases.php
+/config/writer.php
+/report/~$chart.xlsx
+/var/
+/vendor/
+/composer.lock
+/psalm.xml

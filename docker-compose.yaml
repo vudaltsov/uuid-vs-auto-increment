@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+    postgres:
+        image: postgres:15
+        environment:
+            - POSTGRES_USER=root
+            - POSTGRES_PASSWORD=root
+            - TZ=Europe/Moscow
+        ports:
+            - '5432:5432'
+        volumes:
+            - postgres:/var/lib/postgresql/data:cached
+
+volumes:
+    postgres: null
