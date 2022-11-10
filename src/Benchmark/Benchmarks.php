@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace VUdaltsov\UuidVsAutoIncrement;
+namespace VUdaltsov\UuidVsAutoIncrement\Benchmark;
 
-final class Databases
+final class Benchmarks
 {
     /**
-     * @param array<string, callable(): Database> $factories
+     * @param array<string, callable(): Benchmark> $factories
      */
     public function __construct(
         private readonly array $factories,
@@ -16,13 +16,13 @@ final class Databases
 
     /**
      * @param ?list<string> $names
-     * @return \Generator<string, Database>
+     * @return \Generator<string, Benchmark>
      */
     public function get(?array $names = null): \Generator
     {
         foreach ($names ?? array_keys($this->factories) as $name) {
             if (!isset($this->factories[$name])) {
-                throw new \RuntimeException(sprintf('Database "%s" is not registered.', $name));
+                throw new \RuntimeException(sprintf('Benchmark "%s" is not registered.', $name));
             }
 
             yield $name => ($this->factories[$name])();

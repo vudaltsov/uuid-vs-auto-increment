@@ -15,7 +15,6 @@
     xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
 >
     <projectFiles>
-        <directory name="config"/>
         <directory name="src"/>
         <file name="bench"/>
         <ignoreFiles>

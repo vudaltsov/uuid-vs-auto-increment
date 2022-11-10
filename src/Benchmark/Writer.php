@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace VUdaltsov\UuidVsAutoIncrement;
+namespace VUdaltsov\UuidVsAutoIncrement\Benchmark;
 
 interface Writer
 {
