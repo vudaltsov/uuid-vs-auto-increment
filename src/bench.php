@@ -43,7 +43,7 @@ $application->add(new BenchmarkCommand(
     databases: new Databases([
         'postgres' => static fn (): PostgresDatabase => new PostgresDatabase(),
     ]),
-    writerFactory: static fn (string $name) => new Csv(__DIR__ . "/data/{$name}.csv"),
+    writerFactory: static fn (string $name) => new Csv(__DIR__ . "/../data/{$name}.csv"),
 ));
 $application->setDefaultCommand('bench', true);
 
