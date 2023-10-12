@@ -23,34 +23,28 @@ set_error_handler(static fn ($severity, $message, $file, $line) => throw new \Er
 require_once __DIR__ . '/../vendor/autoload.php';
 
 $node = new Hexadecimal('0');
-$benchmarks = new Benchmarks([
-    'auto_increment' => static fn (): AutoIncrementBenchmark => new AutoIncrementBenchmark(),
-    'uuid_v1' => static fn (): UuidBenchmark => new UuidBenchmark(
-        static fn (): string => v1($node),
-    ),
-    'uuid_v7' => static fn (): UuidBenchmark => new UuidBenchmark(
-        static fn (): string => v7(),
-    ),
-    'uuid_v4' => static fn (): UuidBenchmark => new UuidBenchmark(
-        static fn (): string => v4(),
-    ),
-    'uuid_v5' => static fn (): UuidBenchmark => new UuidBenchmark(
-        static fn (): string => v5(Uuid::NIL, random_bytes(16)),
-    ),
-]);
-
-$databases = new Databases([
-    'postgres' => static fn (): PostgresDatabase => new PostgresDatabase(),
-]);
-
 $application = new Application();
-
 $application->add(new BenchmarkCommand(
-    benchmarks: $benchmarks,
-    databases: $databases,
+    benchmarks: new Benchmarks([
+        'auto_increment' => static fn (): AutoIncrementBenchmark => new AutoIncrementBenchmark(),
+        'uuid_v1' => static fn (): UuidBenchmark => new UuidBenchmark(
+            static fn (): string => v1($node),
+        ),
+        'uuid_v7' => static fn (): UuidBenchmark => new UuidBenchmark(
+            static fn (): string => v7(),
+        ),
+        'uuid_v4' => static fn (): UuidBenchmark => new UuidBenchmark(
+            static fn (): string => v4(),
+        ),
+        'uuid_v5' => static fn (): UuidBenchmark => new UuidBenchmark(
+            static fn (): string => v5(Uuid::NIL, random_bytes(16)),
+        ),
+    ]),
+    databases: new Databases([
+        'postgres' => static fn (): PostgresDatabase => new PostgresDatabase(),
+    ]),
     writerFactory: static fn (string $name) => new Csv(__DIR__ . "/data/{$name}.csv"),
 ));
-
 $application->setDefaultCommand('bench', true);
 
 /** @psalm-suppress UncaughtThrowInGlobalScope */
