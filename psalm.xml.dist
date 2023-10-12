@@ -21,13 +21,8 @@
         <extension name="random"/>
     </enableExtensions>
 
-    <plugins>
-        <pluginClass class="Psalm\SymfonyPsalmPlugin\Plugin"/>
-    </plugins>
-
     <projectFiles>
         <directory name="src"/>
-        <file name="bench"/>
         <ignoreFiles>
             <directory name="var"/>
             <directory name="vendor"/>

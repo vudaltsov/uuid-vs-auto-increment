@@ -21,7 +21,6 @@
         "icanhazstring/composer-unused": "^0.8.10",
         "maglnet/composer-require-checker": "^4.7.1",
         "phpyh/coding-standard": "^2.5",
-        "psalm/plugin-symfony": "^5.0.3",
         "rector/rector": "^0.18.5",
         "vimeo/psalm": "^5.15"
     },
@@ -38,13 +37,5 @@
             "abandoned": "report"
         },
         "sort-packages": true
-    },
-    "scripts": {
-        "bench": [
-            "Composer\\Config::disableProcessTimeout",
-            "VUdaltsov\\UuidVsAutoIncrement\\BenchmarkCommand"
-        ],
-        "fixcs": "php-cs-fixer fix -v",
-        "psalm": "psalm --no-diff --show-info"
     }
 }

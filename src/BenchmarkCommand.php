@@ -40,11 +40,13 @@ final class BenchmarkCommand extends Command
     {
         $io = new SymfonyStyle($input, $output);
 
+        /** @var string */
         $benchmarkNames = $input->getOption('benchmarks');
-        $benchmarkNames = $benchmarkNames ? explode(',', (string) $benchmarkNames) : null;
+        $benchmarkNames = $benchmarkNames ? explode(',', $benchmarkNames) : null;
 
+        /** @var string */
         $databaseNames = $input->getOption('databases');
-        $databaseNames = $databaseNames ? explode(',', (string) $databaseNames) : null;
+        $databaseNames = $databaseNames ? explode(',', $databaseNames) : null;
 
         $total = (int) $input->getOption('total');
         \assert($total > 0);

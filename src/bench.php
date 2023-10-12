@@ -20,9 +20,9 @@ use function Ramsey\Uuid\v5;
 use function Ramsey\Uuid\v7;
 
 error_reporting(E_ALL);
-set_error_handler(fn ($severity, $message, $file, $line) => throw new \ErrorException(message: $message, severity: $severity, filename: $file, line: $line));
+set_error_handler(static fn ($severity, $message, $file, $line) => throw new \ErrorException(message: $message, severity: $severity, filename: $file, line: $line));
 
-require_once __DIR__.'/vendor/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
 $node = new Hexadecimal('0');
 $benchmarks = new Benchmarks([
@@ -50,7 +50,7 @@ $application = new Application();
 $application->add(new BenchmarkCommand(
     benchmarks: $benchmarks,
     databases: $databases,
-    writerFactory: static fn (string $name) => new Csv(__DIR__."/data/{$name}.csv"),
+    writerFactory: static fn (string $name) => new Csv(__DIR__ . "/data/{$name}.csv"),
 ));
 
 $application->setDefaultCommand('bench', true);
