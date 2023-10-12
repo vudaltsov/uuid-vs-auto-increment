@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace VUdaltsov\UuidVsAutoIncrement\Postgres;
 
-use VUdaltsov\UuidVsAutoIncrement\AutoIncrementBenchmark\AutoIncrementTable;
+use VUdaltsov\UuidVsAutoIncrement\AutoIncrementTable;
 use VUdaltsov\UuidVsAutoIncrement\Stopwatch\Memory;
 use VUdaltsov\UuidVsAutoIncrement\Stopwatch\TimePeriod;
 

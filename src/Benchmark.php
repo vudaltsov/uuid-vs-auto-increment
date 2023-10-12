@@ -2,9 +2,7 @@
 
 declare(strict_types=1);
 
-namespace VUdaltsov\UuidVsAutoIncrement\Benchmark;
-
-use VUdaltsov\UuidVsAutoIncrement\Database\Database;
+namespace VUdaltsov\UuidVsAutoIncrement;
 
 interface Benchmark
 {

@@ -2,13 +2,12 @@
 
 declare(strict_types=1);
 
-namespace VUdaltsov\UuidVsAutoIncrement\AutoIncrementBenchmark;
+namespace VUdaltsov\UuidVsAutoIncrement;
 
-use VUdaltsov\UuidVsAutoIncrement\Database\Table;
 use VUdaltsov\UuidVsAutoIncrement\Stopwatch\Memory;
 use VUdaltsov\UuidVsAutoIncrement\Stopwatch\TimePeriod;
 
-interface AutoIncrementTable extends Table
+interface AutoIncrementTable
 {
     public function measureInsertExecutionTime(int $rowsNumber): TimePeriod;
 

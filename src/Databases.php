@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace VUdaltsov\UuidVsAutoIncrement\Database;
+namespace VUdaltsov\UuidVsAutoIncrement;
 
 final readonly class Databases
 {

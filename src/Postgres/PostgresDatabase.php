@@ -6,12 +6,11 @@ namespace VUdaltsov\UuidVsAutoIncrement\Postgres;
 
 use PgSql\Connection;
 use PgSql\Result;
-use VUdaltsov\UuidVsAutoIncrement\AutoIncrementBenchmark\AutoIncrementTable;
-use VUdaltsov\UuidVsAutoIncrement\Database\Database;
-use VUdaltsov\UuidVsAutoIncrement\Database\Table;
+use VUdaltsov\UuidVsAutoIncrement\AutoIncrementTable;
+use VUdaltsov\UuidVsAutoIncrement\Database;
 use VUdaltsov\UuidVsAutoIncrement\Stopwatch\Memory;
 use VUdaltsov\UuidVsAutoIncrement\Stopwatch\TimePeriod;
-use VUdaltsov\UuidVsAutoIncrement\UuidBenchmark\UuidTable;
+use VUdaltsov\UuidVsAutoIncrement\UuidTable;
 
 final class PostgresDatabase implements Database
 {
@@ -34,19 +33,14 @@ final class PostgresDatabase implements Database
         $this->connection = pg_connect("host={$host} port={$port} dbname={$dbName} user={$user} password={$password}");
     }
 
-    /**
-     * @template T of Table
-     * @param class-string<T> $class
-     * @return ?T
-     */
-    public function createTable(string $class): ?Table
+    public function createAutoIncrementTable(): AutoIncrementTable
     {
-        /** @var ?T */
-        return match ($class) {
-            AutoIncrementTable::class => new PostgresAutoIncrementTable($this),
-            UuidTable::class => new PostgresUuidTable($this),
-            default => null,
-        };
+        return new PostgresAutoIncrementTable($this);
+    }
+
+    public function createUuidTable(): UuidTable
+    {
+        return new PostgresUuidTable($this);
     }
 
     public function execute(string $query): Result
@@ -58,11 +52,7 @@ final class PostgresDatabase implements Database
     {
         /** @var numeric-string */
         $bytes = pg_fetch_result(
-            result: $this->execute(
-                <<<SQL
-                    select pg_indexes_size('{$table}'::regclass)
-                    SQL,
-            ),
+            result: $this->execute("select pg_indexes_size('{$table}'::regclass)"),
             row: 0,
             field: 0,
         ) ?: throw new \RuntimeException(sprintf('Failed to get indexes size of "%s".', $table));

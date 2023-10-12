@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace VUdaltsov\UuidVsAutoIncrement\AutoIncrementBenchmark;
+namespace VUdaltsov\UuidVsAutoIncrement\Benchmark;
 
-use VUdaltsov\UuidVsAutoIncrement\Benchmark\Benchmark;
-use VUdaltsov\UuidVsAutoIncrement\Benchmark\Writer;
-use VUdaltsov\UuidVsAutoIncrement\Database\Database;
+use VUdaltsov\UuidVsAutoIncrement\Benchmark;
+use VUdaltsov\UuidVsAutoIncrement\Database;
+use VUdaltsov\UuidVsAutoIncrement\Writer;
 
 final class AutoIncrementBenchmark implements Benchmark
 {
@@ -19,12 +19,7 @@ final class AutoIncrementBenchmark implements Benchmark
             'Index size, MiB',
         ]);
 
-        $table = $database->createTable(AutoIncrementTable::class)
-            ?? throw new \RuntimeException(sprintf(
-                '"%s" does not support "%s".',
-                $database::class,
-                AutoIncrementTable::class,
-            ));
+        $table = $database->createAutoIncrementTable();
 
         for ($rows = $step; $rows <= $total; $rows += $step) {
             $randomIds = $this->randomIds(

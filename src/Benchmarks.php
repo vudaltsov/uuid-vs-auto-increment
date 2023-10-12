@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace VUdaltsov\UuidVsAutoIncrement\Benchmark;
+namespace VUdaltsov\UuidVsAutoIncrement;
 
 final readonly class Benchmarks
 {

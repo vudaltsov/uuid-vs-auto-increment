@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace VUdaltsov\UuidVsAutoIncrement\Writer;
 
-use VUdaltsov\UuidVsAutoIncrement\Benchmark\Writer;
+use VUdaltsov\UuidVsAutoIncrement\Writer;
 
 final class Csv implements Writer
 {

@@ -9,9 +9,6 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
-use VUdaltsov\UuidVsAutoIncrement\Benchmark\Benchmarks;
-use VUdaltsov\UuidVsAutoIncrement\Benchmark\Writer;
-use VUdaltsov\UuidVsAutoIncrement\Database\Databases;
 
 final class BenchmarkCommand extends Command
 {

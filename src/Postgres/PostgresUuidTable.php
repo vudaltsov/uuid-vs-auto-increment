@@ -6,7 +6,7 @@ namespace VUdaltsov\UuidVsAutoIncrement\Postgres;
 
 use VUdaltsov\UuidVsAutoIncrement\Stopwatch\Memory;
 use VUdaltsov\UuidVsAutoIncrement\Stopwatch\TimePeriod;
-use VUdaltsov\UuidVsAutoIncrement\UuidBenchmark\UuidTable;
+use VUdaltsov\UuidVsAutoIncrement\UuidTable;
 
 final readonly class PostgresUuidTable implements UuidTable
 {

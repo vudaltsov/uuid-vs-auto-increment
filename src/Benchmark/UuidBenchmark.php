@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace VUdaltsov\UuidVsAutoIncrement\UuidBenchmark;
+namespace VUdaltsov\UuidVsAutoIncrement\Benchmark;
 
-use VUdaltsov\UuidVsAutoIncrement\Benchmark\Benchmark;
-use VUdaltsov\UuidVsAutoIncrement\Benchmark\Writer;
-use VUdaltsov\UuidVsAutoIncrement\Database\Database;
+use VUdaltsov\UuidVsAutoIncrement\Benchmark;
+use VUdaltsov\UuidVsAutoIncrement\Database;
+use VUdaltsov\UuidVsAutoIncrement\Writer;
 
 final class UuidBenchmark implements Benchmark
 {
@@ -26,12 +26,7 @@ final class UuidBenchmark implements Benchmark
             'Index size, MiB',
         ]);
 
-        $table = $database->createTable(UuidTable::class)
-            ?? throw new \RuntimeException(sprintf(
-                '"%s" does not support "%s".',
-                $database::class,
-                UuidTable::class,
-            ));
+        $table = $database->createUuidTable();
 
         for ($rows = $step; $rows <= $total; $rows += $step) {
             $uuids = $this->generateUuids($step);
