@@ -10,7 +10,7 @@
         }
     ],
     "require": {
-        "php": "^8.2",
+        "php": "^8.2.10",
         "ext-pgsql": "*",
         "ramsey/uuid": "^4.7",
         "symfony/console": "^6.3.4"

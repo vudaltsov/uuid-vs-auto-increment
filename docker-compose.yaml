@@ -1,8 +1,18 @@
 version: '3'
 
 services:
+    php:
+        build:
+            context: docker/php
+        volumes:
+            - .:/var/www/html:cached
+        depends_on:
+            postgres:
+                condition: service_healthy
+        working_dir: /var/www/html
+
     postgres:
-        image: postgres:15
+        image: postgres:${POSTGRES_VERSION:-15}-alpine
         environment:
             - POSTGRES_USER=root
             - POSTGRES_PASSWORD=root
@@ -10,7 +20,12 @@ services:
         ports:
             - '5432:5432'
         volumes:
-            - postgres:/var/lib/postgresql/data:cached
+            - postgres:/var/lib/postgresql/data:rw
+        healthcheck:
+            test: pg_isready -d ${POSTGRES_DB:-app}
+            interval: 5s
+            timeout: 5s
+            retries: 30
 
 volumes:
     postgres: null
