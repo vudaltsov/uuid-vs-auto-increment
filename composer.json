@@ -12,8 +12,8 @@
     "require": {
         "php": "^8.2",
         "ext-pgsql": "*",
-        "symfony/console": "^6.3.4",
-        "ramsey/uuid": "^4.7"
+        "ramsey/uuid": "^4.7",
+        "symfony/console": "^6.3.4"
     },
     "require-dev": {
         "ergebnis/composer-normalize": "^2.39",
