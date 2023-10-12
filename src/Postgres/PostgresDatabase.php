@@ -74,7 +74,7 @@ final class PostgresDatabase implements Database
     {
         /** @var non-empty-list<string> */
         $explain = pg_fetch_all_columns(
-            result: $this->execute('explain (analyze true, timing false) '.$query),
+            result: $this->execute('explain (analyze true, timing false) ' . $query),
         );
 
         if (!preg_match('/Execution Time: ([\d.]+)/i', implode('', $explain), $matches)) {

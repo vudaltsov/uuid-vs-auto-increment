@@ -19,7 +19,7 @@ final class Csv implements Writer
         private readonly string $enclosure = '"',
         private readonly string $escape = '\\',
     ) {
-        $this->handle = fopen($file, 'wb');
+        $this->handle = fopen($file, 'w');
     }
 
     public function __destruct()

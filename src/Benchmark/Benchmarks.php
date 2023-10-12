@@ -4,15 +4,14 @@ declare(strict_types=1);
 
 namespace VUdaltsov\UuidVsAutoIncrement\Benchmark;
 
-final class Benchmarks
+final readonly class Benchmarks
 {
     /**
      * @param array<string, callable(): Benchmark> $factories
      */
     public function __construct(
-        private readonly array $factories,
-    ) {
-    }
+        private array $factories,
+    ) {}
 
     /**
      * @param ?list<string> $names

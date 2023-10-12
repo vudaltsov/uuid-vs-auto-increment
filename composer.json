@@ -1,13 +1,8 @@
 {
     "name": "vudaltsov/uuid-vs-auto-increment",
     "description": "UUID vs auto increment benchmark",
-    "type": "project",
     "license": "MIT",
-    "autoload": {
-        "psr-4": {
-            "VUdaltsov\\UuidVsAutoIncrement\\": "src/"
-        }
-    },
+    "type": "project",
     "authors": [
         {
             "name": "Valentin Udaltsov",
@@ -17,14 +12,30 @@
     "require": {
         "php": "^8.1",
         "ext-pgsql": "*",
-        "ramsey/uuid": "^4.6",
-        "symfony/console": "^6.1"
+        "symfony/console": "^6.3.4"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^3.12",
-        "vimeo/psalm": "^4.30",
-        "symfony/var-dumper": "^6.1",
-        "psalm/plugin-symfony": "^4.0"
+        "ergebnis/composer-normalize": "^2.39",
+        "friendsofphp/php-cs-fixer": "^3.35.1",
+        "icanhazstring/composer-unused": "^0.8.10",
+        "maglnet/composer-require-checker": "^4.7.1",
+        "phpyh/coding-standard": "^2.5",
+        "psalm/plugin-symfony": "^5.0.3",
+        "rector/rector": "^0.18.5",
+        "vimeo/psalm": "^5.15"
+    },
+    "autoload": {
+        "psr-4": {
+            "VUdaltsov\\UuidVsAutoIncrement\\": "src/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "ergebnis/composer-normalize": true
+        },
+        "audit": {
+            "abandoned": "report"
+        }
     },
     "scripts": {
         "bench": [

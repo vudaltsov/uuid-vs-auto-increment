@@ -8,10 +8,10 @@ use VUdaltsov\UuidVsAutoIncrement\AutoIncrementBenchmark\AutoIncrementTable;
 use VUdaltsov\UuidVsAutoIncrement\Stopwatch\Memory;
 use VUdaltsov\UuidVsAutoIncrement\Stopwatch\TimePeriod;
 
-final class PostgresAutoIncrementTable implements AutoIncrementTable
+final readonly class PostgresAutoIncrementTable implements AutoIncrementTable
 {
     public function __construct(
-        private readonly PostgresDatabase $database,
+        private PostgresDatabase $database,
     ) {
         $this->database->execute(
             <<<'SQL'

@@ -33,8 +33,7 @@ final class BenchmarkCommand extends Command
             ->addOption('databases', mode: InputOption::VALUE_REQUIRED)
             ->addOption('total', mode: InputOption::VALUE_REQUIRED, default: 20_000_000)
             ->addOption('step', mode: InputOption::VALUE_REQUIRED, default: 200_000)
-            ->addOption('select', mode: InputOption::VALUE_REQUIRED, default: 1000)
-        ;
+            ->addOption('select', mode: InputOption::VALUE_REQUIRED, default: 1000);
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
@@ -42,10 +41,10 @@ final class BenchmarkCommand extends Command
         $io = new SymfonyStyle($input, $output);
 
         $benchmarkNames = $input->getOption('benchmarks');
-        $benchmarkNames = $benchmarkNames ? explode(',', $benchmarkNames) : null;
+        $benchmarkNames = $benchmarkNames ? explode(',', (string) $benchmarkNames) : null;
 
         $databaseNames = $input->getOption('databases');
-        $databaseNames = $databaseNames ? explode(',', $databaseNames) : null;
+        $databaseNames = $databaseNames ? explode(',', (string) $databaseNames) : null;
 
         $total = (int) $input->getOption('total');
         \assert($total > 0);
@@ -66,7 +65,7 @@ final class BenchmarkCommand extends Command
                     select: $select,
                     writer: $writer,
                 );
-                $io->success('Finished! Results written to '.realpath($writer->name()));
+                $io->success('Finished! Results written to ' . realpath($writer->name()));
             }
         }
 

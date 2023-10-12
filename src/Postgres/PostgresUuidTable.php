@@ -8,10 +8,10 @@ use VUdaltsov\UuidVsAutoIncrement\Stopwatch\Memory;
 use VUdaltsov\UuidVsAutoIncrement\Stopwatch\TimePeriod;
 use VUdaltsov\UuidVsAutoIncrement\UuidBenchmark\UuidTable;
 
-final class PostgresUuidTable implements UuidTable
+final readonly class PostgresUuidTable implements UuidTable
 {
     public function __construct(
-        private readonly PostgresDatabase $database,
+        private PostgresDatabase $database,
     ) {
         $this->database->execute(
             <<<'SQL'

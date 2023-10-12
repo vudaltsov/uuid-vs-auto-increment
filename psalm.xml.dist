@@ -1,19 +1,30 @@
 <?xml version="1.0"?>
 <psalm
-    cacheDirectory="var/psalm"
-    checkForThrowsDocblock="true"
-    checkForThrowsInGlobalScope="true"
-    ensureArrayStringOffsetsExist="true"
-    errorLevel="1"
-    findUnusedPsalmSuppress="true"
-    findUnusedVariablesAndParams="true"
-    memoizeMethodCallResults="true"
-    reportMixedIssues="true"
-    sealAllMethods="true"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns="https://getpsalm.org/schema/config"
-    xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
+        cacheDirectory="var/psalm"
+        checkForThrowsDocblock="true"
+        checkForThrowsInGlobalScope="true"
+        disableSuppressAll="true"
+        ensureArrayStringOffsetsExist="true"
+        errorLevel="1"
+        findUnusedCode="true"
+        findUnusedBaselineEntry="true"
+        findUnusedPsalmSuppress="true"
+        findUnusedVariablesAndParams="true"
+        memoizeMethodCallResults="true"
+        reportMixedIssues="true"
+        sealAllMethods="true"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="https://getpsalm.org/schema/config"
+        xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
 >
+    <enableExtensions>
+        <extension name="random"/>
+    </enableExtensions>
+
+    <plugins>
+        <pluginClass class="Psalm\SymfonyPsalmPlugin\Plugin"/>
+    </plugins>
+
     <projectFiles>
         <directory name="src"/>
         <file name="bench"/>
@@ -25,11 +36,18 @@
 
     <forbiddenFunctions>
         <function name="dd"/>
+        <function name="die"/>
         <function name="dump"/>
+        <function name="echo"/>
+        <function name="empty"/>
+        <function name="eval"/>
+        <function name="exit"/>
+        <function name="print"/>
+        <function name="var_export"/>
     </forbiddenFunctions>
 
     <ignoreExceptions>
         <classAndDescendants name="LogicException"/>
         <classAndDescendants name="RuntimeException"/>
     </ignoreExceptions>
-<plugins><pluginClass class="Psalm\SymfonyPsalmPlugin\Plugin"/></plugins></psalm>
+</psalm>

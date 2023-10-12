@@ -4,15 +4,14 @@ declare(strict_types=1);
 
 namespace VUdaltsov\UuidVsAutoIncrement\Database;
 
-final class Databases
+final readonly class Databases
 {
     /**
      * @param array<string, callable(): Database> $factories
      */
     public function __construct(
-        private readonly array $factories,
-    ) {
-    }
+        private array $factories,
+    ) {}
 
     /**
      * @param ?list<string> $names

@@ -15,8 +15,7 @@ final class UuidBenchmark implements Benchmark
      */
     public function __construct(
         private $uuidGenerator,
-    ) {
-    }
+    ) {}
 
     public function run(Database $database, int $total, int $step, int $select, Writer $writer): void
     {
@@ -36,10 +35,7 @@ final class UuidBenchmark implements Benchmark
 
         for ($rows = $step; $rows <= $total; $rows += $step) {
             $uuids = $this->generateUuids($step);
-            /**
-             * @psalm-suppress ArgumentTypeCoercion
-             * @var non-empty-list<string>
-             */
+            /** @var non-empty-list<string> */
             $randomUuids = array_rand(array_flip($uuids), $select);
 
             $writer->write([
