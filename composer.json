@@ -36,7 +36,8 @@
         },
         "audit": {
             "abandoned": "report"
-        }
+        },
+        "sort-packages": true
     },
     "scripts": {
         "bench": [
