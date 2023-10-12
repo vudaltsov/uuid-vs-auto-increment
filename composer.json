@@ -10,9 +10,10 @@
         }
     ],
     "require": {
-        "php": "^8.1",
+        "php": "^8.2",
         "ext-pgsql": "*",
-        "symfony/console": "^6.3.4"
+        "symfony/console": "^6.3.4",
+        "ramsey/uuid": "^4.7"
     },
     "require-dev": {
         "ergebnis/composer-normalize": "^2.39",
