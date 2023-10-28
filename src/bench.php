@@ -41,7 +41,7 @@ $application->add(new BenchmarkCommand(
         ),
     ]),
     databases: new Databases([
-        'postgres' => static fn (): PostgresDatabase => new PostgresDatabase(),
+        'postgres' => static fn (): PostgresDatabase => new PostgresDatabase(/*host: 'postgres'*/),
     ]),
     writerFactory: static fn (string $name) => new Csv(__DIR__ . "/../data/{$name}.csv"),
 ));
